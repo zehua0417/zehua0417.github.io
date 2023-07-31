@@ -1,3 +1,6 @@
+name: Clear NPM cache
+  run: npm cache clean --force
+
 name: deploying Hexo project to GitHub pages
 
 on:
