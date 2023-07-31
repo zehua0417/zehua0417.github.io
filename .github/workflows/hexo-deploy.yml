@@ -1,20 +1,42 @@
 name: deploying Hexo project to GitHub pages
+
 on:
   push:
     branches:
-      - master # master 分支有 push 行为时就触发这个 action
+      - master # master branch triggers this action when there is a push behavior
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v2.3.1
+        with:
+          submodules: true
+          fetch-depth: 0
 
-      - name: Build and Deploy
-        uses: theme-keep/hexo-deploy-github-pages-action@master # 使用专门部署 Hexo 到 GitHub pages 的 action
-        env:
-          PERSONAL_TOKEN: ${{ secrets.HEXO_DEPLOY }} # secret 名
-          PUBLISH_REPOSITORY: zehua0417/zehua0417.github.io # 公共仓库，格式：GitHub 用户名/仓库名
-          BRANCH: gh-pages # 分支，填 gh-pages 就行
-          PUBLISH_DIR: ./public # 部署 public 目录下的文件
+      - name: Setup Node
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: '14'
+
+      - name: Cache dependencies
+        uses: actions/cache@v2.1.4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        run: npx hexo generate
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
