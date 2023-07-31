@@ -1,45 +1,38 @@
-name: deploying Hexo project to GitHub pages
+name: Pages
 
 on:
   push:
     branches:
-      - master # master branch triggers this action when there is a push behavior
+      - master  # default branch
 
 jobs:
-  build-and-deploy:
+  pages:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
-      - name: Clear NPM cache
-        run: npm cache clean --force
-
-      - name: Checkout
-        uses: actions/checkout@v2.3.1
+      - uses: actions/checkout@v3
         with:
-          submodules: true
-          fetch-depth: 0
-
-      - name: Setup Node
-        uses: actions/setup-node@v2.1.4
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # If your repository depends on submodule, please see: https://github.com/actions/checkout
+          submodules: recursive
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v2
         with:
-          node-version: '14'
-
-      - name: Cache dependencies
-        uses: actions/cache@v2.1.4
+          node-version: '18'
+      - name: Cache NPM dependencies
+        uses: actions/cache@v2
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: node_modules
+          key: ${{ runner.OS }}-npm-cache
           restore-keys: |
-            ${{ runner.os }}-node-
-
+            ${{ runner.OS }}-npm-cache
       - name: Install Dependencies
-        run: npm ci
-
+        run: npm install
       - name: Build
-        run: npx hexo generate
-
+        run: npm run build
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3.7.3
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
