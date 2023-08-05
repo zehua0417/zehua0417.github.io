@@ -36,5 +36,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          publish_branch: gh-pages  # Set the branch on the destination repository
-          external_repository: zehua0417/zehua0417.github.io  # Set the destination repository
