@@ -231,10 +231,10 @@ aside:
       enable: true
       icon: fab fa-github
       text: Follow Me
-      link: https://github.com/zehua0417
+      link: https://github.com/zehua0417/zehua0417.github.io.git
   card_announcement:
     enable: true
-    content: This is my Blog
+    content: 更新follow me 为仓库地址, 修复了一些bug, 优化了一些细节; 预计在近期加入评论功能, ...
   card_recent_post:
     enable: true
     limit: 5 # if set 0 will show all
