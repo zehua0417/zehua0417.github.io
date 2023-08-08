@@ -168,7 +168,13 @@
 <h3 id="1-2-检查vim"><a href="#1-2-检查vim" class="headerlink" title="1.2. 检查vim"></a>1.2. 检查vim</h3><p>在centos系统中, 通过<code>alias vi</code>可以看到, vi实际上是<code>vim -u NONE -N</code>的别名.<br>但是在ubuntu系统中, vi不是vim的别名, 而且&#x2F;usr&#x2F;bin&#x2F;vi是一系列文件链接中的一环</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> vi</span><br><span class="line"><span class="built_in">which</span> vi</span><br><span class="line"><span class="built_in">ls</span> -l /usr/bin/vi</span><br></pre></td></tr></table></figure>
 
-<p><img src="/img/image-20230625160433351.png" alt="image-20230625160433351"></p>
+<div class="gallery">
+    <div class="fj-gallery  data" data-rowHeight="220" data-limit="10">
+    <span class="gallery-data">[{"url":"/img/vim/image-20230625160433351.png","alt":"image-20230625160433351"}]</span>
+    </div>
+    <button class="gallery-load-more"><span>Load More</span><i class="fa-solid fa-arrow-down"></i></button>
+    </div>
+
 <p>所以在ubuntu中输入运行vi, 实际上运行的是vim.tiny程序, 只提供了少量的vim功能, 所以建议用一下命令下载vim</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install vim</span><br></pre></td></tr></table></figure>
 
