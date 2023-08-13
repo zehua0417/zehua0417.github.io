@@ -1,4 +1,4 @@
-# Navigation bar settings (導航欄設置)
+https://g7uglclr.lc-cn-n1-shared.com# Navigation bar settings (導航欄設置)
 # see https://butterfly.js.org/posts/4aa8abbe/##導航欄設置-Navigation-bar-settings
 # --------------------------------------
 
@@ -235,9 +235,9 @@ aside:
   card_announcement:
     enable: true
     content: 
-    - 更新follow me 为仓库地址, 修复了一些bug, 优化了一些细节; 
-    - 由于不支持mardown部分语法, 部分网页图片出错正在修复;
-    - 预计在近期加入评论功能; 
+    - 最新加入评论功能(基于valine)
+    - 更新follow me 为仓库地址, 修复了一些bug, 优化了一些细节
+    - 由于不支持mardown部分语法, 部分网页图片出错正在修复
     - ...
   card_recent_post:
     enable: true
