@@ -1,7 +1,7 @@
 ---
 title: 在ubuntu黑窗口终端中配置shadowsocks(适用于wsl)
-date: 2023-7-21
-update: 2023-7-21
+date: 2023-8-21
+update: 2023-8-21
 tag: 
   - linux
   - shell
