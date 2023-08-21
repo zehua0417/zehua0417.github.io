@@ -148,7 +148,7 @@ categories:
 
 7. 最后我写了一个shell脚本
 
-     ~/bashss/wallkiller
+     ~/bashss/wallkiller.sh
 
      ```shell
      #!/bin/bash
