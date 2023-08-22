@@ -175,4 +175,42 @@ categories:
 
      以后可以直接运行此脚本, 不用一个一个敲命令了
 
+     下面是一个检测脚本, 用来检测是否连接成功
+     ~/bashss/testwallkiller.sh
+
+     ```shell
+     #!/bin/bash
+
+     # 定义一个被封锁的网站列表
+          declare -a blocked_sites=("https://www.google.com" "https://www.youtube.com" "https://www.twitter.com" "https://www.facebook.com")
      
+         success_sites=()
+     fail_sites=()
+     
+     # 循环访问每个网站
+         for site in "${blocked_sites[@]}"; do
+         echo "Testing: $site"
+         proxychains curl -4 -s -o /dev/null --connect-timeout 10 "$site"
+         if [[ $? == 0 ]]; then
+         echo "Successfully connected to $site"
+         success_sites+=("$site")
+         else
+         echo "Failed to connect to $site"
+         fail_sites+=("$site")
+         fi
+         done
+     
+         echo "##############"
+         echo "Summary:"
+         echo "Successful connections:"
+         for site in "${success_sites[@]}"; do
+         echo "- $site"
+         done
+     
+         echo "Failed connections:"
+         for site in "${fail_sites[@]}"; do
+         echo "- $site"
+         done
+    ```
+
+
