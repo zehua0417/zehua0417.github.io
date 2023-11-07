@@ -217,7 +217,7 @@ fi
 ```shell
 #!/bin/bash
 
-ARGS=$(getopt -o i:o:g:t: --long input:,output:,gaptime:,template:,toc -n "$0" -- "$@")
+ARGS=$(getopt -o i:o:g:t: --long input:,output:,gaptime:,template:,toc,tex -n "$0" -- "$@")
 if [ $? != 0 ]; then
     echo "用法: $0 -i <input_md> -o <output_pdf>"
     exit 1
@@ -230,7 +230,9 @@ output_pdf=''
 initial_hash=''
 current_hash=''
 tocflag="false"
+texflag="false"
 gaptime=3  # 将等待时间设置为3秒
+flags=''
 templatefile=/c/Users/admin/Documents/bashDoc/eisvogel.tex
 
 
@@ -262,6 +264,10 @@ while true; do
             tocflag="true"
             shift 1
             ;;
+        --tex)
+            texflag="true"
+            shift 1
+            ;;
         --)
             shift
             break
@@ -274,11 +280,19 @@ while true; do
     esac
 done
 
+if [ "$tocflag" = "true" ];then 
+    flags+=" --toc --number-sections"
+fi
+
+if [ "$texflag" = "true" ];then
+    flags+=" --pdf-engine=xelatex"
+fi
 
 echo "input: $input_md"
 echo "output: $output_pdf"
 echo "template: $templatefile"
-echo "toc: $tocflag"
+echo "flags: $flags"
+echo "CMD: pandoc $input_md -o $output_pdf --from markdown --template $templatefile --filter pandoc-latex-environment --listings $flags"
 
 
 # 无限循环，每隔3秒检测一次文件是否被更改
@@ -294,11 +308,15 @@ while true; do
     if [ "$current_hash" != "$initial_hash" ]; then
         echo "文件已被更改！"
 
-        if [ "$tocflag" == "true" ]; then
-            pandoc --toc --number-sections "$input_md" -o "$output_pdf" --from markdown --template "$templatefile" --filter pandoc-latex-environment --listings --pdf-engine=xelatex
-        else
-            pandoc "$input_md" -o "$output_pdf" --from markdown --template "$templatefile" --filter pandoc-latex-environment --listings --pdf-engine=exlatex
-        fi
+        #if [ "$tocflag" == "true" ]; then
+        #    pandoc --toc --number-sections "$input_md" -o "$output_pdf" --from markdown --template "$templatefile" --filter pandoc-latex-environment --listings --pdf-engine=xelatex
+        #else
+        #    pandoc "$input_md" -o "$output_pdf" --from markdown --template "$templatefile" --filter pandoc-latex-environment --listings --pdf-engine=exlatex
+        #fi
+        
+        pandoc "$input_md" -o "$output_pdf" --from markdown --template "$templatefile" --filter pandoc-latex-environment --listings $flags
+
+
         pandoc_exit_code=$?
 
         if [ $pandoc_exit_code -eq 0 ]; then
@@ -312,5 +330,7 @@ while true; do
     # 等待3秒
     sleep $gaptime
 done
+
+
 
 ```
