@@ -69,9 +69,9 @@ SAW 处理 Stereo-seq 的测序数据以生成空间基因表达矩阵，用户�
 	- SAW: checkGTF
 - 参考脚本: [example script](https://github.com/STOmics/SAW/tree/c6a058239d944a427278ee262008d1828a96b13f/Scripts/pre_buildIndexedRef)
 ##### mask
-- **格式**: $*$.h5
+- **格式**: $*.h5$
 ##### image
-- **格式**: $SN\_^*.ipr$ & $SN\_^*.tar.gz$
+- **格式**: $SN\_^*.ipr$ \& $SN\_^*.tar.gz$
 ##### fastaq
 **PE format**
 - read1 = CID + MID
@@ -129,9 +129,9 @@ SAW 处理 Stereo-seq 的测序数据以生成空间基因表达矩阵，用户�
 筛选高变菊英后进行PCA和UMAP降维, 再使用Leiden等算法进行聚类分析
 ##### saturation 饱和度计算
 根据饱和度曲线判断数据是否需要加测
-$$
+$$\begin{equation}
 sequence~saturation=1-\frac{Unique~Reads}{Total Reads}
-$$
+\end{equation}$$
 ##### report 报告输出
 
 {% gallery %}
