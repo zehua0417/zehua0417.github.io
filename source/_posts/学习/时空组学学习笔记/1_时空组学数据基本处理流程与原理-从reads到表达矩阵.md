@@ -129,7 +129,9 @@ SAW 处理 Stereo-seq 的测序数据以生成空间基因表达矩阵，用户�
 筛选高变菊英后进行PCA和UMAP降维, 再使用Leiden等算法进行聚类分析
 ##### saturation 饱和度计算
 根据饱和度曲线判断数据是否需要加测
-$$sequence~saturation=1-\frac{Unique~Reads}{Total Reads}$$
+$$
+sequence~saturation=1-\frac{Unique~Reads}{Total Reads}
+$$
 ##### report 报告输出
 
 {% gallery %}
