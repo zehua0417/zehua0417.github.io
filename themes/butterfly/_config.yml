@@ -344,14 +344,14 @@ rightside_item_order:
 
 # MathJax
 mathjax:
-  enable: true
-  per_page: true
+  enable: flase
+  per_page: flase
 
 # KaTeX
 katex:
-  enable: false
-  per_page: false
-  hide_scrollbar: true
+  enable: true
+  per_page: true
+  hide_scrollbar: flase
 
 # search (搜索)
 # see https://butterfly.js.org/posts/ceeb73f/#搜索系統
