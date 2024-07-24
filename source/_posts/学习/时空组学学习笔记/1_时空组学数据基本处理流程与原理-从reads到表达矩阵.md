@@ -12,8 +12,7 @@ tags:
   - single-cell
 title: 时空专题1_时空组学数据基本处理流程与原理_从reads到表达矩阵
 ---
-# ❗ Topic
-**时空组学数据基本处理流程与原理-从reads到表达矩阵**
+# ❗**时空组学数据基本处理流程与原理-从reads到表达矩阵**
 
 ## Stereo-seq技术基础原理
 ### 文件
@@ -71,7 +70,9 @@ SAW 处理 Stereo-seq 的测序数据以生成空间基因表达矩阵，用户�
 ##### mask
 - **格式**: $*.h5$
 ##### image
-- **格式**: $SN\_^*.ipr$ & $SN\_^*.tar.gz$
+- **格式**: 
+  - $SN\_^*.ipr$
+  - $SN\_^*.tar.gz$
 ##### fastaq
 **PE format**
 - read1 = CID + MID
@@ -91,12 +92,12 @@ SAW 处理 Stereo-seq 的测序数据以生成空间基因表达矩阵，用户�
 - **Step3 GenomeMapping**: mRNA比对到参考物种基因组
 **输出文件**:
 - **BAM格式比对结果文件**: 
-	- $*.Aligned.sortedByCoord.out.bam$
+	- *.Aligned.sortedByCoord.out.bam
 	- tag列包含每条reads的空间位置信息
 - 比对结果数据统计文件
-	- $^*\_barcodeMap.stat$: BarcodeMapping信息
-	- $^*.Log.final.out$: GenomeMapping信息
-	- $^*.barcodeReadsCount.txt$: 每个barcode的reads数
+	- *_barcodeMap.stat: BarcodeMapping信息
+	- *.Log.final.out: GenomeMapping信息
+	- *.barcodeReadsCount.txt: 每个barcode的reads数
 ##### merge 合并
 ##### count 注释
 
