@@ -105,3 +105,7 @@ theme: butterfly
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy: git@github.com:zehua0417/zehua0417.github.io.git
 type: ''
+
+
+
+kramed: gfm: true pedantic: false sanitize: false tables: true breaks: true smartLists: true smartypants: true
