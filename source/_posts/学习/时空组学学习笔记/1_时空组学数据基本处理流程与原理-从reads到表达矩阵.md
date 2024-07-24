@@ -140,5 +140,5 @@ $$
 ### 蛋白质组学和转录组学
 SAW 蛋白质组学和转录组学工作流程处理来自单芯片的测序数据以生成空间基因和蛋白质表达矩阵。您可以使用这两个组学信息开始更高维度的研究。此工作流程包括 23 个基本和建议流程。
 {% gallery %}
-![img](/img/obsimg/SAW_pt_v7.1_workflow.png|400)
+![img](/img/obsimg/SAW_pt_v7.1_workflow.png)
 {% endgallery %}
