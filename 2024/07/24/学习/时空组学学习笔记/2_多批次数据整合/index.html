@@ -1,0 +1,352 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>时空专题2_多批次数据整合 | Lihuax's Blog</title><meta name="author" content="Lihuax"><meta name="copyright" content="Lihuax"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="❗多批次数据整合🔑 Key Points批次效应批次效应是指在不同条件下的测量值具有不同的数据表现，且这种数据表现的不同与生物学变量无关，是一种技术偏差。 12345graph TD;实验对象 --&gt; 不同实验时间;实验对象 --&gt; 不同实验人员;实验对象 --&gt; 不同批次试剂;实验对象 --&gt; 不同实验平台; 去除批次效应 去批次过程：批次效应是一种“噪声”，去除“噪声">
+<meta property="og:type" content="article">
+<meta property="og:title" content="时空专题2_多批次数据整合">
+<meta property="og:url" content="https://zehua0417.github.io/2024/07/24/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2_%E5%A4%9A%E6%89%B9%E6%AC%A1%E6%95%B0%E6%8D%AE%E6%95%B4%E5%90%88/index.html">
+<meta property="og:site_name" content="Lihuax&#39;s Blog">
+<meta property="og:description" content="❗多批次数据整合🔑 Key Points批次效应批次效应是指在不同条件下的测量值具有不同的数据表现，且这种数据表现的不同与生物学变量无关，是一种技术偏差。 12345graph TD;实验对象 --&gt; 不同实验时间;实验对象 --&gt; 不同实验人员;实验对象 --&gt; 不同批次试剂;实验对象 --&gt; 不同实验平台; 去除批次效应 去批次过程：批次效应是一种“噪声”，去除“噪声">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://zehua0417.github.io/img/avatar.png">
+<meta property="article:published_time" content="2024-07-24T03:12:47.058Z">
+<meta property="article:modified_time" content="2024-07-24T03:12:47.058Z">
+<meta property="article:author" content="Lihuax">
+<meta property="article:tag" content="bioinformatics">
+<meta property="article:tag" content="BGI">
+<meta property="article:tag" content="bio">
+<meta property="article:tag" content="Course_note">
+<meta property="article:tag" content="stereo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zehua0417.github.io/img/avatar.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zehua0417.github.io/2024/07/24/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2_%E5%A4%9A%E6%89%B9%E6%AC%A1%E6%95%B0%E6%8D%AE%E6%95%B4%E5%90%88/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '时空专题2_多批次数据整合',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-24 03:12:47'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/top_img.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Lihuax's Blog"><span class="site-name">Lihuax's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">时空专题2_多批次数据整合</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-07-24T03:12:47.058Z" title="Created 2024-07-24 03:12:47">2024-07-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-07-24T03:12:47.058Z" title="Updated 2024-07-24 03:12:47">2024-07-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="时空专题2_多批次数据整合"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="❗多批次数据整合"><a href="#❗多批次数据整合" class="headerlink" title="❗多批次数据整合"></a>❗多批次数据整合</h1><h2 id="🔑-Key-Points"><a href="#🔑-Key-Points" class="headerlink" title="🔑 Key Points"></a>🔑 Key Points</h2><h3 id="批次效应"><a href="#批次效应" class="headerlink" title="批次效应"></a>批次效应</h3><p>批次效应是指在不同条件下的测量值具有不同的数据表现，且这种数据表现的不同与生物学变量无关，是一种技术偏差。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph TD;</span><br><span class="line">实验对象 --&gt; 不同实验时间;</span><br><span class="line">实验对象 --&gt; 不同实验人员;</span><br><span class="line">实验对象 --&gt; 不同批次试剂;</span><br><span class="line">实验对象 --&gt; 不同实验平台;</span><br></pre></td></tr></table></figure>
+<h4 id="去除批次效应"><a href="#去除批次效应" class="headerlink" title="去除批次效应"></a>去除批次效应</h4><ul>
+<li>去批次过程：批次效应是一种“噪声”，去除“噪声”揭示恢复底层的生物学结构&#x2F;信息。</li>
+<li>单细胞转录组整合算法分类：</li>
+</ul>
+<ol>
+<li>基于批次效应和基因表达谱建模的方法：Combat, LIGER </li>
+<li>基于在不同批次间寻找互近邻对MNNs的方法：BBKNN, Scanorama, Seurat v3, Harmony </li>
+<li>基于深度学习的方法：scGEN, scGAN, iMAP</li>
+</ol>
+<h3 id="经典去批次效应算法"><a href="#经典去批次效应算法" class="headerlink" title="经典去批次效应算法"></a>经典去批次效应算法</h3><h4 id="MNN"><a href="#MNN" class="headerlink" title="MNN"></a>MNN</h4><p>根据批次间的 MNN 对来消除批次效应。MNN 对被认为是批次之间最相似的相同类型的细胞，而细胞之间表达值的差异提供了对批次效应的估计，通过对许多 MNN 对的表达之差异作平均，可以更精确地对批次效应进行估计，进而从中获得一个校正向量，从而实现表达谱层面的矫正。</p>
+<h5 id="三个假设"><a href="#三个假设" class="headerlink" title="三个假设"></a>三个假设</h5><ul>
+<li>在两个批次中至少存在一个共有的细胞群</li>
+<li>批次效应几乎与生物子空间正交</li>
+<li>批次效应变异比不同细胞类型之间的生物效应变异小得多</li>
+</ul>
+<h5 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h5><ol>
+<li><p><strong>对细胞$x$的表达向量$Y_x$进行余弦归一化(将其模变为1), 然后对细胞计算余弦归一化表达谱之间的欧式距离:</strong><br>$$<br>7Y_x \leftarrow \frac{Y_x}{||Y_x||}<br>$$</p>
+<blockquote>
+<p>在归一化数据上计算距离等价于在原始表达量上计算余弦距离. 而选择计算余弦距离是因为其对测序深度和不同批次间捕获率的技术差异具有更强的鲁棒性</p>
+</blockquote>
+</li>
+<li><p><strong>确定彼此之间的最近邻</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph TD;</span><br><span class="line">批次i中的细胞i1 --&gt; |寻找它在批次α中的k个近邻| 两个细胞是否在彼此的k个近邻中?;</span><br><span class="line">批次α中的细胞i2 --&gt; |寻找它在批次i中的k个近邻| 两个细胞是否在彼此的k个近邻中?;</span><br><span class="line">两个细胞是否在彼此的k个近邻中? --&gt; |是| 将这对细胞视为一对互近邻对;</span><br><span class="line">两个细胞是否在彼此的k个近邻中? --&gt; |否| 不视为互近邻对;</span><br></pre></td></tr></table></figure>
+<p>具体考虑两个批次的样本:<br>对批次1中的细胞 $i_1$，寻找它在批次2中的 k 个近邻；同样对批次2中的细胞 $i_2$，寻找它在批次1中的 k 个近邻；如果两个细胞在彼此的 k 个近邻中，那么就把这对细胞视为一对互近邻对。</p>
+</li>
+<li><p><strong>对每个MMN对, 计算一个MMN对特定的批次向量, 即对细胞的表达谱向量的差值</strong></p>
+<div class="gallery">
+    <div class="fj-gallery  data" data-rowHeight="220" data-limit="10">
+    <span class="gallery-data">[{"url":"/img/obsimg/Pasted%20image%2020240718160120.png|350","alt":"img"}]</span>
+    </div>
+    <button class="gallery-load-more"><span>Load More</span><i class="fa-solid fa-arrow-down"></i></button>
+    </div></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">compute_correction</span>(<span class="params">data1, data2, mnn1, mnn2, data2_or_raw2, sigma</span>):</span><br><span class="line">    <span class="comment"># 计算所有的 MNN pair-specific batch correction vector</span></span><br><span class="line">    vect = data1[mnn1] - data2[mnn2]</span><br><span class="line">    <span class="comment"># 获取 Query 批次中, 有 MNN 的细胞的索引mnn_index以及该细胞的MNN 数mnn_count</span></span><br><span class="line">    mnn_index, mnn_count = np.unique(mnn2, return_counts=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># 将 Query 细胞对应的 MNN batch-correction 求平均， 如果某个细胞没有 MNN, 则 correction vector 为全0向量</span></span><br><span class="line">    vect_reduced = np.zeros((data2.shape[<span class="number">0</span>], vect.shape[<span class="number">1</span>]), dtype=np.float32)</span><br><span class="line">    <span class="keyword">for</span> index, ve <span class="keyword">in</span> <span class="built_in">zip</span>(mnn2, vect):</span><br><span class="line">        vect_reduced[index] += ve</span><br><span class="line">    vect_avg = np.divide(vect_reduced[mnn_index], mnn_count.astype(np.float32)[:, <span class="literal">None</span>])</span><br><span class="line">    <span class="comment"># kdist(data2_or_raw2, data2_or_raw2[mnn_index]) 计算了所有细胞与每个有 MNN 的细胞的距离，记作 kdist,</span></span><br><span class="line">    <span class="comment"># 然后乘了个高斯核函数 np.exp(-kdist / sigma); 于是 exp_distance 大小为 n x m, 越相似的细胞则值越大</span></span><br><span class="line">    exp_distance = np.exp(-kdist(data2_or_raw2, data2_or_raw2[mnn_index]) / sigma)</span><br><span class="line">    <span class="comment"># 计算有 MNN 的细胞的密度density, 即所有有 MNN 的细胞对彼此的距离的和</span></span><br><span class="line">    density = np.<span class="built_in">sum</span>(exp_distance[mnn_index], axis=<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># 计算权重mult, 其列和为 total_prob (非常接近 1), mult 的每列可以认为是有 MNN 的细胞与所有细胞的 (归一化的) 相似性</span></span><br><span class="line">    mult = np.divide(exp_distance, density)</span><br><span class="line">    total_prob = np.<span class="built_in">sum</span>(mult, axis=<span class="number">1</span>, keepdims=<span class="literal">True</span>)</span><br><span class="line">    <span class="comment"># 根据对每个有 MNN 细胞的相似性, 对所有 correction vector 加权和得到每个细胞特定的矫正向量, 最后除以total_prob 微调下结果</span></span><br><span class="line">    output = np.dot(mult, vect_avg)</span><br><span class="line">    <span class="keyword">return</span> np.divide(output, total_prob)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Seurat"><a href="#Seurat" class="headerlink" title="Seurat"></a>Seurat</h4><p><strong>Step 1.</strong> 使用CCA分析将两个数据降维到同一个低维空间。CCA降维后的空间距离不是相似性而是相关性。所以相同类型与状态的细胞可以克服技术偏倚重叠在一起。<br><strong>Step 2.</strong> 运用MNN算法、表达矩阵计算经过CCA降维后的低维空间中的近邻对。在Seurat中将这些相互邻对称为“锚点”（Anchor）<br><strong>Step 3.</strong> 修正不正确的锚点。 </p>
+<ol>
+<li>在CCA空间中找到的锚点，返回到原始基因表达矩阵高维空间中验证，如果它们的转录特征相似性高则保留，否则过滤掉此锚点</li>
+<li>检查锚点所在数据集最近邻的30个细胞，查看它们的锚点匹配对细胞的数量，重叠越多分值越高，代表锚点可靠性越高</li>
+</ol>
+<h4 id="Harmony"><a href="#Harmony" class="headerlink" title="Harmony"></a>Harmony</h4><p><strong>Step 1.</strong> Soft K-Means 聚类 &amp; 最大多样性聚类 (Maximum Diversity Clustering) </p>
+<ul>
+<li>初始化设定 k 个类别和中心点坐标，通过类内距离最小化，类间距离最大化来优化点的 k 个类别标签和它们的中心点坐标。</li>
+<li>最大多样性聚类：细胞 c2 距离 cluster1 有点远，本来不能算作 cluster1 的一份子；但是 c2 和 cluster1 的细胞来自不同的数据集，因为期望不同的数据集融合，所以破例让它加入 cluster1 了。<br><strong>Step 2.</strong> “Experts Matrix” 批次校正 </li>
+<li>计算每一个 cluster 的所有数据集的全局中心，以及特定数据集的中心 </li>
+<li>在每个 cluster 中，基于中心为每个数据集计算校正因子，使用特定的细胞因子校正每一个细胞</li>
+</ul>
+<h4 id="Combat"><a href="#Combat" class="headerlink" title="Combat"></a>Combat</h4><ul>
+<li>Combat 方式是一种基于经验贝叶斯方法去除批次效应的方法，尤其是对小样本数据更加有效。</li>
+<li>Combat 方法基于估计参数的先验分布，为每个基因独立估算每个批次的均值和方差并进行调整。</li>
+<li>测量的基因表达形式如：<br>$$<br>x_{ijg} &#x3D; \alpha_i + X \beta_i + \gamma_{ig} + \delta_{ig} \epsilon_{ijg}<br>$$<blockquote>
+<p>其中，$x_{ijg}$ 表示批次 $g$ 中样本 $j$ 基因 $i$ 的表达测定值。$\alpha_i$ 为基因的平均表达，$X$ 为样本条件的设计矩阵，$\beta_i$ 为对应 $X$ 矩阵的回归系数的向量，$\epsilon_{ijg}$ 为假设服从 $N(0, \sigma_i)$ 的高斯分布差项，$\gamma_{ig}$ 和 $\delta_{ig}$ 为批次 $g$ 中基因 $i$ 加性和乘性批次效应。</p>
+</blockquote>
+</li>
+<li>基因表达经过标准化后为，<br>$$<br>Z_{ijg} &#x3D; \frac{x_{ijg} - \hat{\alpha}_i - X \beta_i}{\hat{\delta}_i}<br>$$</li>
+<li>假设 $Z_{ijg} \sim N(\gamma_{ig}, \delta_{ig})$，用最小二乘法估计 $\hat{\alpha}<em>i$，$\beta_i$ 和 $\gamma</em>{ig}$，采用参数先验或非参数先验方法计算出批次效应估计值 $\gamma_{ig}$ 和 $\delta_{ig}$。$\hat{\delta}<em>i$ 为所有样本中基因 $i$ 的标准差。其中参数先验方法要求 $\gamma</em>{ig} \sim N(\gamma_i, \tau_i^2)$ 以及 $\delta_{ig}^2 \sim InverseGamma(\lambda_i, \theta_i)$。  </li>
+<li>最终的批次效应调整后的数据如下：<br>$$<br>x_{ijg} &#x3D; \frac{\hat{\delta}<em>i}{\delta</em>{ig}} (Z_{ijg} - \gamma_{ig}) + \hat{\alpha}_i + X \beta_i<br>$$<blockquote>
+<p>其中，$x_{ijg}$ 为调整后的基因表达数据，$Z_{ijg}$ 为标准化的基因表达值。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="Deep-Learning-Methods"><a href="#Deep-Learning-Methods" class="headerlink" title="Deep Learning Methods"></a>Deep Learning Methods</h4><h5 id="残差模型"><a href="#残差模型" class="headerlink" title="残差模型"></a>残差模型</h5><p>将不同批次的数据输入到残差模型中，经过残差模型学习后，采用最大化不同批次数据间的均值差异策略来实现模型参数的优化。</p>
+<h5 id="生成对抗学习"><a href="#生成对抗学习" class="headerlink" title="生成对抗学习"></a>生成对抗学习</h5><p>源自于图像的风格迁移，对不同批次的数据进行学习并相互生成，实现批次效应去除。</p>
+<h5 id="域自适应"><a href="#域自适应" class="headerlink" title="域自适应"></a>域自适应</h5><p>源于迁移学习，将数据的批次效应当成不同批次数据间的分布不同，通过深度学习模型调整不同域之间的分布差异，以实现批次效应去除。</p>
+<h3 id="批次效应评估指标"><a href="#批次效应评估指标" class="headerlink" title="批次效应评估指标"></a>批次效应评估指标</h3><h4 id="K-nearest-neighbor-Batch-Effect-Test-kBET"><a href="#K-nearest-neighbor-Batch-Effect-Test-kBET" class="headerlink" title="K-nearest-neighbor Batch-Effect Test (kBET)"></a>K-nearest-neighbor Batch-Effect Test (kBET)</h4><p>运用 $\chi^2$ 检验方法，验证在局部区域中的不同批次数据的分布与整体数据中数据批次的分布的一致性。<br>零假设：数据不存在批次效应。<br>$\chi^2$ 分布：$\kappa_j^k &#x3D; \sum_{i&#x3D;1}^{l} \frac{(n - f_i \times k)^2}{f_i \times k} \sim \chi_{l-1}^2$<br> P 值：$p_j^k &#x3D; 1 - F_{l-1} (\kappa_j^k)$ </p>
+<blockquote>
+<p>其中，$\chi_{l-1}^2$ 表示自由度为 $l-1$ 的 $\chi^2$ 分布，$n$ 表示在局部区域中观测到的每个批次的频数，$f_i$ 表示期望的批次分布，$k$ 为局部区域包含的样本数。$F_{l-1}$ 表示自由度为 $l-1$ 的 $\chi^2$ 分布的累积概率密度函数。</p>
+</blockquote>
+<h4 id="Local-Inverse-Simpson’s-Index-LISI"><a href="#Local-Inverse-Simpson’s-Index-LISI" class="headerlink" title="Local Inverse Simpson’s Index (LISI)"></a>Local Inverse Simpson’s Index (LISI)</h4><p>源自于 Simpson 多样性，通过计算局部区域内不同批次数据的概率分布，或局部区域内不同细胞类型的概率分布，并将每个局部区域中的概率取平均并取反，以此评估在局部区域中不同数据的混合是否均匀。<br>$$<br>LISI(x_i) &#x3D; \frac{1}{\sum_{y \in Y} P(y|x_i)^2}<br>$$ </p>
+<blockquote>
+<p>其中，$x_i$ 表示局部区域中第 $i$ 个细胞，$y$ 表示第 $i$ 个细胞所属的数据批次或细胞类型，$P(\ast)$ 表示局部区域中第 $i$ 个细胞属于 $y$ 类型的概率。</p>
+</blockquote>
+<h4 id="平均轮廓系数（Average-Silhouette-Coefficient）"><a href="#平均轮廓系数（Average-Silhouette-Coefficient）" class="headerlink" title="平均轮廓系数（Average Silhouette Coefficient）"></a>平均轮廓系数（Average Silhouette Coefficient）</h4><ul>
+<li>计算样本 $i$ 到同簇其他样本的平均距离 $d_i$。$d_i$ 越小，说明样本 $i$ 越应该被聚类到该簇。将距离 $d_i$ 称为样本 $i$ 的簇内不相似度。簇 $C$ 中所有样本距离 $d_i$ 的均值，称为簇 $C$ 的簇不相似度。 </li>
+<li>计算样本 $i$ 到其他某簇 $C_j$ 的所有样本的平均距离 $d_i’$，成为样本 $i$ 与簇 $C_j$ 的不相似度。定义样本 $i$ 的簇间不相似度：$d_i’ &#x3D; \min(d_{i1}’, d_{i2}’, …, d_{ij}’)$。$d_i’$ 越大说明样本 $i$ 越不属于簇 $C_j$。 </li>
+<li>根据样本 $i$ 的簇内不相似度 $d_i$ 和簇间不相似度 $d_i’$，定义样本 $i$ 的轮廓系数：<br>$$<br>s(i)&#x3D;\frac{d_i’-d_i}{max(d_i’-d_i)}<br>$$<br>$$<br>s(i) &#x3D; \begin{cases} 1 - \frac{d_i}{d_i’} &amp; d_i &lt; d_i’ \ 0 &amp; d_i &#x3D; d_i’ \ \frac{d_i’}{d_i} - 1 &amp; d_i &gt; d_i’ \end{cases}<br>$$<blockquote>
+<p>$s(i)$ 接近 1，说明样本 $i$ 聚类合理；$s(i)$ 接近 -1，说明样本 $i$ 更应该分到另外的簇；若$s(i)$ 近似为 0，说明样本在两个簇的边界上。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="调整兰德系数（Adjusted-Rand-Index-ARI）"><a href="#调整兰德系数（Adjusted-Rand-Index-ARI）" class="headerlink" title="调整兰德系数（Adjusted Rand Index, ARI）"></a>调整兰德系数（Adjusted Rand Index, ARI）</h4><p>见第四课, 细胞分群</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://zehua0417.github.io">Lihuax</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://zehua0417.github.io/2024/07/24/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2_%E5%A4%9A%E6%89%B9%E6%AC%A1%E6%95%B0%E6%8D%AE%E6%95%B4%E5%90%88/">https://zehua0417.github.io/2024/07/24/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2_%E5%A4%9A%E6%89%B9%E6%AC%A1%E6%95%B0%E6%8D%AE%E6%95%B4%E5%90%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/bioinformatics/">bioinformatics</a><a class="post-meta__tags" href="/tags/BGI/">BGI</a><a class="post-meta__tags" href="/tags/bio/">bio</a><a class="post-meta__tags" href="/tags/Course-note/">Course_note</a><a class="post-meta__tags" href="/tags/stereo/">stereo</a></div><div class="post_share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/24/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1_%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E6%95%B0%E6%8D%AE%E5%9F%BA%E6%9C%AC%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B%E4%B8%8E%E5%8E%9F%E7%90%86-%E4%BB%8Ereads%E5%88%B0%E8%A1%A8%E8%BE%BE%E7%9F%A9%E9%98%B5/" title="时空专题1_时空组学数据基本处理流程与原理_从reads到表达矩阵"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">时空专题1_时空组学数据基本处理流程与原理_从reads到表达矩阵</div></div></a></div><div class="next-post pull-right"><a href="/2023/11/07/%E5%AD%A6%E4%B9%A0/%E4%B8%AA%E4%BA%BAbashscript%E8%84%9A%E6%9C%AC%E5%88%86%E4%BA%AB/" title="个人bashscript脚本分享"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">个人bashscript脚本分享</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2024/07/24/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1_%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E6%95%B0%E6%8D%AE%E5%9F%BA%E6%9C%AC%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B%E4%B8%8E%E5%8E%9F%E7%90%86-%E4%BB%8Ereads%E5%88%B0%E8%A1%A8%E8%BE%BE%E7%9F%A9%E9%98%B5/" title="时空专题1_时空组学数据基本处理流程与原理_从reads到表达矩阵"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-24</div><div class="title">时空专题1_时空组学数据基本处理流程与原理_从reads到表达矩阵</div></div></a></div><div><a href="/2024/07/24/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E5%8D%95%E7%BB%86%E8%83%9E%E5%88%86%E6%9E%90%E6%8F%AD%E7%A4%BA%E7%BB%93%E7%9B%B4%E8%82%A0%E7%99%8C%E5%85%8D%E7%96%AB%E6%B2%BB%E7%96%97%E4%B8%8D%E5%90%8C%E5%8F%8D%E5%BA%94%E7%9A%84%E7%BB%86%E8%83%9E%E5%8A%A8%E6%80%81/" title="时空组学经典论文阅读 Spatiotemporal single-cell analysis decodes cellular dynamics underlying different responses to immunotherapy in colorectal cancer"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-24</div><div class="title">时空组学经典论文阅读 Spatiotemporal single-cell analysis decodes cellular dynamics underlying different responses to immunotherapy in colorectal cancer</div></div></a></div><div><a href="/2023/08/06/%E5%AD%A6%E4%B9%A0/%E7%90%86%E8%A7%A3%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" title="&lt;&lt;理解生物信息学&gt;&gt; 阅读笔记 第二部分 序列联配"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-06</div><div class="title">&lt;&lt;理解生物信息学&gt;&gt; 阅读笔记 第二部分 序列联配</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lihuax</div><div class="author-info__description">lov(life oriented living)</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zehua0417/zehua0417.github.io.git"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/zehua0417" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:zehuali0417@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">最新加入评论功能(基于valine),更新follow me 为仓库地址, 修复了一些bug, 优化了一些细节,由于不支持mardown部分语法, 部分网页图片出错正在修复,...</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%9D%97%E5%A4%9A%E6%89%B9%E6%AC%A1%E6%95%B0%E6%8D%AE%E6%95%B4%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">❗多批次数据整合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%91-Key-Points"><span class="toc-number">1.1.</span> <span class="toc-text">🔑 Key Points</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B9%E6%AC%A1%E6%95%88%E5%BA%94"><span class="toc-number">1.1.1.</span> <span class="toc-text">批次效应</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%BB%E9%99%A4%E6%89%B9%E6%AC%A1%E6%95%88%E5%BA%94"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">去除批次效应</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E5%8E%BB%E6%89%B9%E6%AC%A1%E6%95%88%E5%BA%94%E7%AE%97%E6%B3%95"><span class="toc-number">1.1.2.</span> <span class="toc-text">经典去批次效应算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MNN"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">MNN</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E5%81%87%E8%AE%BE"><span class="toc-number">1.1.2.1.1.</span> <span class="toc-text">三个假设</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.2.1.2.</span> <span class="toc-text">算法流程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Seurat"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">Seurat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Harmony"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">Harmony</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Combat"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">Combat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Deep-Learning-Methods"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">Deep Learning Methods</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AE%8B%E5%B7%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.2.5.1.</span> <span class="toc-text">残差模型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.1.2.5.2.</span> <span class="toc-text">生成对抗学习</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%9F%E8%87%AA%E9%80%82%E5%BA%94"><span class="toc-number">1.1.2.5.3.</span> <span class="toc-text">域自适应</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B9%E6%AC%A1%E6%95%88%E5%BA%94%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="toc-number">1.1.3.</span> <span class="toc-text">批次效应评估指标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#K-nearest-neighbor-Batch-Effect-Test-kBET"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">K-nearest-neighbor Batch-Effect Test (kBET)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Local-Inverse-Simpson%E2%80%99s-Index-LISI"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">Local Inverse Simpson’s Index (LISI)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B3%E5%9D%87%E8%BD%AE%E5%BB%93%E7%B3%BB%E6%95%B0%EF%BC%88Average-Silhouette-Coefficient%EF%BC%89"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">平均轮廓系数（Average Silhouette Coefficient）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E6%95%B4%E5%85%B0%E5%BE%B7%E7%B3%BB%E6%95%B0%EF%BC%88Adjusted-Rand-Index-ARI%EF%BC%89"><span class="toc-number">1.1.3.4.</span> <span class="toc-text">调整兰德系数（Adjusted Rand Index, ARI）</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/24/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E5%8D%95%E7%BB%86%E8%83%9E%E5%88%86%E6%9E%90%E6%8F%AD%E7%A4%BA%E7%BB%93%E7%9B%B4%E8%82%A0%E7%99%8C%E5%85%8D%E7%96%AB%E6%B2%BB%E7%96%97%E4%B8%8D%E5%90%8C%E5%8F%8D%E5%BA%94%E7%9A%84%E7%BB%86%E8%83%9E%E5%8A%A8%E6%80%81/" title="时空组学经典论文阅读 Spatiotemporal single-cell analysis decodes cellular dynamics underlying different responses to immunotherapy in colorectal cancer">时空组学经典论文阅读 Spatiotemporal single-cell analysis decodes cellular dynamics underlying different responses to immunotherapy in colorectal cancer</a><time datetime="2024-07-24T03:12:47.058Z" title="Created 2024-07-24 03:12:47">2024-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/24/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1_%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E6%95%B0%E6%8D%AE%E5%9F%BA%E6%9C%AC%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B%E4%B8%8E%E5%8E%9F%E7%90%86-%E4%BB%8Ereads%E5%88%B0%E8%A1%A8%E8%BE%BE%E7%9F%A9%E9%98%B5/" title="时空专题1_时空组学数据基本处理流程与原理_从reads到表达矩阵">时空专题1_时空组学数据基本处理流程与原理_从reads到表达矩阵</a><time datetime="2024-07-24T03:12:47.058Z" title="Created 2024-07-24 03:12:47">2024-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/24/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2_%E5%A4%9A%E6%89%B9%E6%AC%A1%E6%95%B0%E6%8D%AE%E6%95%B4%E5%90%88/" title="时空专题2_多批次数据整合">时空专题2_多批次数据整合</a><time datetime="2024-07-24T03:12:47.058Z" title="Created 2024-07-24 03:12:47">2024-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/07/%E5%AD%A6%E4%B9%A0/%E4%B8%AA%E4%BA%BAbashscript%E8%84%9A%E6%9C%AC%E5%88%86%E4%BA%AB/" title="个人bashscript脚本分享">个人bashscript脚本分享</a><time datetime="2023-11-07T00:00:00.000Z" title="Created 2023-11-07 00:00:00">2023-11-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/25/%E7%94%9F%E6%B4%BB/lihuax%E7%9A%84%E7%8E%8B%E5%B0%8F%E6%B3%A2%E6%9D%82%E6%96%87%E9%80%89/" title="lihuax的王小波杂文选">lihuax的王小波杂文选</a><time datetime="2023-08-25T17:30:00.000Z" title="Created 2023-08-25 17:30:00">2023-08-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Lihuax</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addModeChange('mermaid', runMermaid)
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'g7ugLcLRZQImFitw8qLfg663-gzGzoHsz',
+      appKey: 'KLsDFN1Oblr0vPS7zl3cg5wG',
+      avatar: 'monsterid',
+      serverURLs: 'https://g7uglclr.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
