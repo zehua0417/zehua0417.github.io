@@ -109,8 +109,8 @@ SAW 处理 Stereo-seq 的测序数据以生成空间基因表达矩阵，用户�
 
 **输出文件**
 - **BAM格式比对结果文件与GEF格式表达矩阵**
-	- *.Aligned.sortedByCoord.out.merge.q10.deduo.target.bam$, Tag列新增了注释成功的基因信息
-	- $.raw.gef, 基因表达矩阵
+	- *.Aligned.sortedByCoord.out.merge.q10.deduo.target.bam, Tag列新增了注释成功的基因信息
+	- .raw.gef, 基因表达矩阵
 - **日志文件**
 	- logs/Bam2Gem_data_time.log, 记录了被跳过的基因
 ##### register/rapidRegister (图像)配准
