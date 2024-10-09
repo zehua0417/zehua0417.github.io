@@ -1,6 +1,7 @@
 ---
+title: 时空专题1_时空组学数据基本处理流程与原理_从reads到表达矩阵
 date: 2024-07-23 12:48
-modification_date: 2024-07-23T12:48:08
+update: 2024-07-23 12:48:08
 subject: bio
 direction: setereo-seq
 tags:
@@ -10,7 +11,6 @@ tags:
   - bioinformatics
   - stereo
   - single-cell
-title: 时空专题1_时空组学数据基本处理流程与原理_从reads到表达矩阵
 ---
 # ❗**时空组学数据基本处理流程与原理-从reads到表达矩阵**
 
