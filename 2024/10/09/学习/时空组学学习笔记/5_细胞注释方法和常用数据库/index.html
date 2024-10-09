@@ -1,0 +1,406 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>时空专题5_细胞注释方法和常用数据库 | Lihuax's Blog</title><meta name="author" content="Lihuax"><meta name="copyright" content="Lihuax"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="❗ 细胞注释方法和常用数据库基本概念目的 单细胞: 注释每个细胞的类型 空间: 注释每个spot的细胞类型占比(由于现阶段分辨率低)  原理 相同的细胞类型具有相似的表达谱 根据方法分类 手动 自动    细胞注释方法单细胞注释方法基于相似性与统计学SingleR1 步骤 选择高变基因作为feature 计算ref(参考数据集)和qry(查询数据集)的Spearman相关系数 80%分位数作为每个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="时空专题5_细胞注释方法和常用数据库">
+<meta property="og:url" content="https://zehua0417.github.io/2024/10/09/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/5_%E7%BB%86%E8%83%9E%E6%B3%A8%E9%87%8A%E6%96%B9%E6%B3%95%E5%92%8C%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+<meta property="og:site_name" content="Lihuax&#39;s Blog">
+<meta property="og:description" content="❗ 细胞注释方法和常用数据库基本概念目的 单细胞: 注释每个细胞的类型 空间: 注释每个spot的细胞类型占比(由于现阶段分辨率低)  原理 相同的细胞类型具有相似的表达谱 根据方法分类 手动 自动    细胞注释方法单细胞注释方法基于相似性与统计学SingleR1 步骤 选择高变基因作为feature 计算ref(参考数据集)和qry(查询数据集)的Spearman相关系数 80%分位数作为每个">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://zehua0417.github.io/img/avatar.png">
+<meta property="article:published_time" content="2024-10-09T05:40:40.744Z">
+<meta property="article:modified_time" content="2024-10-09T05:40:40.744Z">
+<meta property="article:author" content="Lihuax">
+<meta property="article:tag" content="BGI">
+<meta property="article:tag" content="bio">
+<meta property="article:tag" content="bioinformatics">
+<meta property="article:tag" content="single-cell">
+<meta property="article:tag" content="Course_note">
+<meta property="article:tag" content="stereo">
+<meta property="article:tag" content="Course">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zehua0417.github.io/img/avatar.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zehua0417.github.io/2024/10/09/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/5_%E7%BB%86%E8%83%9E%E6%B3%A8%E9%87%8A%E6%96%B9%E6%B3%95%E5%92%8C%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '时空专题5_细胞注释方法和常用数据库',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-09 05:40:40'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/top_img.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Lihuax's Blog"><span class="site-name">Lihuax's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">时空专题5_细胞注释方法和常用数据库</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-10-09T05:40:40.744Z" title="Created 2024-10-09 05:40:40">2024-10-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-10-09T05:40:40.744Z" title="Updated 2024-10-09 05:40:40">2024-10-09</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="时空专题5_细胞注释方法和常用数据库"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="❗-细胞注释方法和常用数据库"><a href="#❗-细胞注释方法和常用数据库" class="headerlink" title="❗ 细胞注释方法和常用数据库"></a>❗ 细胞注释方法和常用数据库</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><ul>
+<li><strong>单细胞</strong>: 注释每个细胞的类型</li>
+<li><strong>空间</strong>: 注释每个spot的细胞类型占比(由于现阶段分辨率低)</li>
+</ul>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ul>
+<li>相同的细胞类型具有相似的表达谱</li>
+<li>根据方法分类<ul>
+<li>手动</li>
+<li>自动</li>
+</ul>
+</li>
+</ul>
+<h2 id="细胞注释方法"><a href="#细胞注释方法" class="headerlink" title="细胞注释方法"></a>细胞注释方法</h2><h3 id="单细胞注释方法"><a href="#单细胞注释方法" class="headerlink" title="单细胞注释方法"></a>单细胞注释方法</h3><h4 id="基于相似性与统计学"><a href="#基于相似性与统计学" class="headerlink" title="基于相似性与统计学"></a>基于相似性与统计学</h4><h5 id="SingleR1"><a href="#SingleR1" class="headerlink" title="SingleR1"></a>SingleR<sup><a href="#fn_1" id="reffn_1">1</a></sup></h5><ul>
+<li><strong>步骤</strong><ul>
+<li>选择高变基因作为feature</li>
+<li>计算ref(参考数据集)和qry(查询数据集)的Spearman相关系数</li>
+<li>80%分位数作为每个细胞类型的得分</li>
+<li>排除法循环注释</li>
+</ul>
+</li>
+<li><strong>创新性</strong><ul>
+<li><strong>循环</strong>排除法(LOOCV)注释<ul>
+<li><strong>排除一个细胞类型</strong>：在每次迭代中，从参考数据集中排除一个细胞类型，剩下的细胞类型用作训练数据。</li>
+<li><strong>计算相关性</strong>：用排除后的参考数据集中的细胞类型的表达谱计算与查询数据集中细胞的相关性。</li>
+<li><strong>注释</strong>：根据计算出的相关性，为查询数据集中每个细胞分配一个最匹配的细胞类型。</li>
+<li><strong>验证</strong>：将被排除的细胞类型作为验证集，以检查该类型的细胞在查询数据集中的注释结果是否准确。</li>
+<li><strong>重复</strong>：对参考数据集中所有细胞类型进行上述步骤，每次排除不同的细胞类型，最终汇总所有迭代的结果，以提高整体的注释准确性。<blockquote>
+<p>阈值的设定: 最高得分类 - 0.05</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="基于机器学习与深度学习"><a href="#基于机器学习与深度学习" class="headerlink" title="基于机器学习与深度学习"></a>基于机器学习与深度学习</h4><h5 id="scPred2"><a href="#scPred2" class="headerlink" title="scPred2"></a>scPred<sup><a href="#fn_2" id="reffn_2">2</a></sup></h5><ul>
+<li>步骤<ul>
+<li>选择能够区分细胞类型的主成分, 去除批次效应</li>
+<li>SVM分类器训练校验调整超参 </li>
+<li>预测</li>
+</ul>
+</li>
+<li>创新点<ul>
+<li>可以区分细胞类型的主成分</li>
+</ul>
+</li>
+</ul>
+<h4 id="基于半机器学习"><a href="#基于半机器学习" class="headerlink" title="基于半机器学习"></a>基于半机器学习</h4><h5 id="Seurat-v43"><a href="#Seurat-v43" class="headerlink" title="Seurat v43"></a>Seurat v4<sup><a href="#fn_3" id="reffn_3">3</a></sup></h5><ul>
+<li>步骤<ul>
+<li>sPCA把qry投影到效用的低维嵌入中</li>
+<li>互临近的点作为anchor</li>
+<li>Anchor和qry之间的相似性</li>
+</ul>
+</li>
+</ul>
+<h3 id="多细胞分辨率的空间组注释"><a href="#多细胞分辨率的空间组注释" class="headerlink" title="多细胞分辨率的空间组注释"></a>多细胞分辨率的空间组注释</h3><h4 id="基于非负矩阵分解的方法"><a href="#基于非负矩阵分解的方法" class="headerlink" title="基于非负矩阵分解的方法"></a>基于非负矩阵分解的方法</h4><h5 id="SPO-Tlight-4"><a href="#SPO-Tlight-4" class="headerlink" title="SPO Tlight 4"></a>SPO Tlight <sup><a href="#fn_4" id="reffn_4">4</a></sup></h5><p><div class="gallery">
+    <div class="fj-gallery  data" data-rowHeight="220" data-limit="10">
+    <span class="gallery-data">[{"url":"/img/obsimg/Pasted%20image%2020240722143611.png","alt":"img"}]</span>
+    </div>
+    <button class="gallery-load-more"><span>Load More</span><i class="fa-solid fa-arrow-down"></i></button>
+    </div>
+</p>
+<p>基于一个种子的非负矩阵因子分解回归(Seeded NMF regression)及非负最小二乘法(NNLS)<br>W: $\text{gene} \times \text{topic}$<br>H: $\text{topic}\times\text{cell}$</p>
+<ul>
+<li><p><strong>Step1</strong>: 根据单细胞(参考转录组)初始化W, H</p>
+<ul>
+<li>W: marker gene $1-p_value$, 描述了每个细胞类型有哪些marker基因</li>
+<li>H: celltype 的 one-hot coding, <blockquote>
+<p>参考转录组中:$W\times H = V$<br>$V$代表细胞表达谱</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>Step2</strong>: 非负矩阵分解获得W, H</p>
+<ul>
+<li>此时H不是celltype的比例</li>
+</ul>
+</li>
+<li><strong>Step3</strong>: 利用$W$和ST数据(计数矩阵 $V′$)进行NNLS(非负最小二乘法)映射以获得系数矩阵$H′$<ul>
+<li>$H′$：列表示空间转录组学数据中每个点的主题特征。</li>
+</ul>
+</li>
+</ul>
+<h5 id="SpatialDWLS"><a href="#SpatialDWLS" class="headerlink" title="SpatialDWLS"></a>SpatialDWLS</h5><h4 id="基于统计模型的方法"><a href="#基于统计模型的方法" class="headerlink" title="基于统计模型的方法"></a>基于统计模型的方法</h4><h5 id="Cell2location5"><a href="#Cell2location5" class="headerlink" title="Cell2location5"></a>Cell2location<sup><a href="#fn_5" id="reffn_5">5</a></sup></h5><ol>
+<li>首先使用贝叶斯模型估计单细胞数据集中细胞类型的表达特征</li>
+<li>把空间组数据集分解到特征空间, 获得每个spot的细胞类型<p><div class="gallery">
+    <div class="fj-gallery  data" data-rowHeight="220" data-limit="10">
+    <span class="gallery-data">[{"url":"/img/obsimg/Pasted%20image%2020240723111809.png","alt":"img"}]</span>
+    </div>
+    <button class="gallery-load-more"><span>Load More</span><i class="fa-solid fa-arrow-down"></i></button>
+    </div>
+</p>
+基因 g 在位置 s 的表达水平 $μ<em>{s,g}$ 被建模为参考细胞类型特征 $g</em>{f,g}$ (从单细胞数据中总结而来, f为细胞类型)的线性函数：<script type="math/tex; mode=display">
+\mu_{s,g} = \left(\underbrace{m_{g}}_{\text{technology sensitivity}} \cdot \underbrace{\sum_{f} {w_{s,f} \: g_{f,g}}}_{\text{cell type contributions}} + \underbrace{ s_{e,g}}_{\text{additive shift}}\right) \cdot \underbrace{y_{s}}_{\text{per-location sensitivity}}</script></li>
+</ol>
+<p><blockquote>
+<p>其中 $m_{g}$, $s_{e,g}$, $y_{s}$ 为修正项, 使用数学分布进行估计, 较为复杂不做展开。关键部分 $\sum_{f} w_{s,f} g_{f,g}$ 表示<strong>在 s 处细胞类型矩阵</strong>点乘<strong>细胞类型 f 每种基因的表达特征矩阵</strong>之和</p>
+</blockquote>
+
+</p>
+<p>代码中的两个关键参数:</p>
+<ul>
+<li>N_cells_per_location: 每个location中估计的细胞数, 对cellbin来说为1</li>
+<li>detection_alpha: 玄学参数, 默认为20, 可选200<h5 id="RCTD"><a href="#RCTD" class="headerlink" title="RCTD"></a>RCTD</h5><h5 id="STdeconvolve"><a href="#STdeconvolve" class="headerlink" title="STdeconvolve"></a>STdeconvolve</h5><h5 id="Stereoscope"><a href="#Stereoscope" class="headerlink" title="Stereoscope"></a>Stereoscope</h5><h4 id="基于深度学习"><a href="#基于深度学习" class="headerlink" title="基于深度学习"></a>基于深度学习</h4><h5 id="CellDART"><a href="#CellDART" class="headerlink" title="CellDART"></a>CellDART</h5><h5 id="DSTG"><a href="#DSTG" class="headerlink" title="DSTG"></a>DSTG</h5><h5 id="Tangram6"><a href="#Tangram6" class="headerlink" title="Tangram6"></a>Tangram<sup><a href="#fn_6" id="reffn_6">6</a></sup></h5><h1 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h1><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2>网上一堆, 略<h2 id="常用数据库"><a href="#常用数据库" class="headerlink" title="常用数据库"></a>常用数据库</h2><h3 id="Marker-gene-数据库"><a href="#Marker-gene-数据库" class="headerlink" title="Marker gene 数据库"></a>Marker gene 数据库</h3></li>
+<li>SCSig</li>
+<li>PanglaoDB</li>
+<li>CellMarker</li>
+</ul>
+<h3 id="物种和组织特异性数据库"><a href="#物种和组织特异性数据库" class="headerlink" title="物种和组织特异性数据库"></a>物种和组织特异性数据库</h3><ul>
+<li>GEO</li>
+<li>Express Atlas</li>
+</ul>
+<h3 id="大型Atlas"><a href="#大型Atlas" class="headerlink" title="大型Atlas"></a>大型Atlas</h3><ul>
+<li>Human Cell Atlas</li>
+<li>Tabula Muris</li>
+<li>Mouse Cell Atlas</li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. <a target="_blank" rel="noopener" href="https://bioconductor.org/packages/release/bioc/html/SingleR.html">singleR link</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. <a target="_blank" rel="noopener" href="https://github.com/powellgenomicslab/scPred">scPred</a><a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. <a target="_blank" rel="noopener" href="https://satijalab.org/seurat/articles/get_started">seurat</a><a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_4">
+<sup>4</sup>. <a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/349096707_SPOTlight_Seeded_NMF_regression_to_deconvolute_spatial_transcriptomics_spots_with_single-cell_transcriptome">SPOTlight link</a><a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_5">
+<sup>5</sup>. <a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41587-021-01139-4">cell2location link</a><a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_6">
+<sup>6</sup>. <a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41592-021-01264-7#Sec12">tangram link</a><a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://zehua0417.github.io">Lihuax</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://zehua0417.github.io/2024/10/09/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/5_%E7%BB%86%E8%83%9E%E6%B3%A8%E9%87%8A%E6%96%B9%E6%B3%95%E5%92%8C%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93/">https://zehua0417.github.io/2024/10/09/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/5_%E7%BB%86%E8%83%9E%E6%B3%A8%E9%87%8A%E6%96%B9%E6%B3%95%E5%92%8C%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/BGI/">BGI</a><a class="post-meta__tags" href="/tags/bio/">bio</a><a class="post-meta__tags" href="/tags/bioinformatics/">bioinformatics</a><a class="post-meta__tags" href="/tags/single-cell/">single-cell</a><a class="post-meta__tags" href="/tags/Course-note/">Course_note</a><a class="post-meta__tags" href="/tags/stereo/">stereo</a><a class="post-meta__tags" href="/tags/Course/">Course</a></div><div class="post_share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/10/09/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2_%E5%A4%9A%E6%89%B9%E6%AC%A1%E6%95%B0%E6%8D%AE%E6%95%B4%E5%90%88/" title="时空专题2_多批次数据整合"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">时空专题2_多批次数据整合</div></div></a></div><div class="next-post pull-right"><a href="/2024/10/09/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E5%8D%95%E7%BB%86%E8%83%9E%E5%88%86%E6%9E%90%E6%8F%AD%E7%A4%BA%E7%BB%93%E7%9B%B4%E8%82%A0%E7%99%8C%E5%85%8D%E7%96%AB%E6%B2%BB%E7%96%97%E4%B8%8D%E5%90%8C%E5%8F%8D%E5%BA%94%E7%9A%84%E7%BB%86%E8%83%9E%E5%8A%A8%E6%80%81/" title="时空组学经典论文阅读 Spatiotemporal single-cell analysis decodes cellular dynamics underlying different responses to immunotherapy in colorectal cancer"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">时空组学经典论文阅读 Spatiotemporal single-cell analysis decodes cellular dynamics underlying different responses to immunotherapy in colorectal cancer</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2024/10/09/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1_%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E6%95%B0%E6%8D%AE%E5%9F%BA%E6%9C%AC%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B%E4%B8%8E%E5%8E%9F%E7%90%86-%E4%BB%8Ereads%E5%88%B0%E8%A1%A8%E8%BE%BE%E7%9F%A9%E9%98%B5/" title="时空专题1_时空组学数据基本处理流程与原理_从reads到表达矩阵"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-09</div><div class="title">时空专题1_时空组学数据基本处理流程与原理_从reads到表达矩阵</div></div></a></div><div><a href="/2024/10/09/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/4_%E6%97%B6%E7%A9%BA%E7%BB%84%E7%BB%86%E8%83%9E%E5%88%86%E7%BE%A4%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E3%80%81%E6%80%9D%E6%83%B3%E5%8F%8A%E5%BA%94%E7%94%A8/" title="时空专题4_时空组细胞分群算法原理与思想"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-09</div><div class="title">时空专题4_时空组细胞分群算法原理与思想</div></div></a></div><div><a href="/2024/10/09/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2_%E5%A4%9A%E6%89%B9%E6%AC%A1%E6%95%B0%E6%8D%AE%E6%95%B4%E5%90%88/" title="时空专题2_多批次数据整合"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-09</div><div class="title">时空专题2_多批次数据整合</div></div></a></div><div><a href="/2024/10/09/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E5%8D%95%E7%BB%86%E8%83%9E%E5%88%86%E6%9E%90%E6%8F%AD%E7%A4%BA%E7%BB%93%E7%9B%B4%E8%82%A0%E7%99%8C%E5%85%8D%E7%96%AB%E6%B2%BB%E7%96%97%E4%B8%8D%E5%90%8C%E5%8F%8D%E5%BA%94%E7%9A%84%E7%BB%86%E8%83%9E%E5%8A%A8%E6%80%81/" title="时空组学经典论文阅读 Spatiotemporal single-cell analysis decodes cellular dynamics underlying different responses to immunotherapy in colorectal cancer"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-09</div><div class="title">时空组学经典论文阅读 Spatiotemporal single-cell analysis decodes cellular dynamics underlying different responses to immunotherapy in colorectal cancer</div></div></a></div><div><a href="/2023/08/06/%E5%AD%A6%E4%B9%A0/%E7%90%86%E8%A7%A3%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" title="&lt;&lt;理解生物信息学&gt;&gt; 阅读笔记 第二部分 序列联配"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-06</div><div class="title">&lt;&lt;理解生物信息学&gt;&gt; 阅读笔记 第二部分 序列联配</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lihuax</div><div class="author-info__description">lov(life oriented living)</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zehua0417/zehua0417.github.io.git"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/zehua0417" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:zehuali0417@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">最新加入评论功能(基于valine),更新follow me 为仓库地址, 修复了一些bug, 优化了一些细节,由于不支持mardown部分语法, 部分网页图片出错正在修复,...</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%9D%97-%E7%BB%86%E8%83%9E%E6%B3%A8%E9%87%8A%E6%96%B9%E6%B3%95%E5%92%8C%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">❗ 细胞注释方法和常用数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E7%9A%84"><span class="toc-number">1.1.1.</span> <span class="toc-text">目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.2.</span> <span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%86%E8%83%9E%E6%B3%A8%E9%87%8A%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">细胞注释方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E7%BB%86%E8%83%9E%E6%B3%A8%E9%87%8A%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.1.</span> <span class="toc-text">单细胞注释方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%9B%B8%E4%BC%BC%E6%80%A7%E4%B8%8E%E7%BB%9F%E8%AE%A1%E5%AD%A6"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">基于相似性与统计学</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#SingleR1"><span class="toc-number">1.2.1.1.1.</span> <span class="toc-text">SingleR1</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">基于机器学习与深度学习</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#scPred2"><span class="toc-number">1.2.1.2.1.</span> <span class="toc-text">scPred2</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%8D%8A%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">基于半机器学习</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Seurat-v43"><span class="toc-number">1.2.1.3.1.</span> <span class="toc-text">Seurat v43</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BB%86%E8%83%9E%E5%88%86%E8%BE%A8%E7%8E%87%E7%9A%84%E7%A9%BA%E9%97%B4%E7%BB%84%E6%B3%A8%E9%87%8A"><span class="toc-number">1.2.2.</span> <span class="toc-text">多细胞分辨率的空间组注释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E9%9D%9E%E8%B4%9F%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">基于非负矩阵分解的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#SPO-Tlight-4"><span class="toc-number">1.2.2.1.1.</span> <span class="toc-text">SPO Tlight 4</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SpatialDWLS"><span class="toc-number">1.2.2.1.2.</span> <span class="toc-text">SpatialDWLS</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%BB%9F%E8%AE%A1%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">基于统计模型的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Cell2location5"><span class="toc-number">1.2.2.2.1.</span> <span class="toc-text">Cell2location5</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#RCTD"><span class="toc-number">1.2.2.2.2.</span> <span class="toc-text">RCTD</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#STdeconvolve"><span class="toc-number">1.2.2.2.3.</span> <span class="toc-text">STdeconvolve</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Stereoscope"><span class="toc-number">1.2.2.2.4.</span> <span class="toc-text">Stereoscope</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">基于深度学习</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CellDART"><span class="toc-number">1.2.2.3.1.</span> <span class="toc-text">CellDART</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#DSTG"><span class="toc-number">1.2.2.3.2.</span> <span class="toc-text">DSTG</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Tangram6"><span class="toc-number">1.2.2.3.3.</span> <span class="toc-text">Tangram6</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TODO"><span class="toc-number">2.</span> <span class="toc-text">TODO</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.1.</span> <span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.2.</span> <span class="toc-text">常用数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Marker-gene-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.2.1.</span> <span class="toc-text">Marker gene 数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E7%A7%8D%E5%92%8C%E7%BB%84%E7%BB%87%E7%89%B9%E5%BC%82%E6%80%A7%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.2.2.</span> <span class="toc-text">物种和组织特异性数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E5%9E%8BAtlas"><span class="toc-number">2.2.3.</span> <span class="toc-text">大型Atlas</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/09/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1_%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E6%95%B0%E6%8D%AE%E5%9F%BA%E6%9C%AC%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B%E4%B8%8E%E5%8E%9F%E7%90%86-%E4%BB%8Ereads%E5%88%B0%E8%A1%A8%E8%BE%BE%E7%9F%A9%E9%98%B5/" title="时空专题1_时空组学数据基本处理流程与原理_从reads到表达矩阵">时空专题1_时空组学数据基本处理流程与原理_从reads到表达矩阵</a><time datetime="2024-10-09T05:40:40.744Z" title="Created 2024-10-09 05:40:40">2024-10-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/09/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/4_%E6%97%B6%E7%A9%BA%E7%BB%84%E7%BB%86%E8%83%9E%E5%88%86%E7%BE%A4%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E3%80%81%E6%80%9D%E6%83%B3%E5%8F%8A%E5%BA%94%E7%94%A8/" title="时空专题4_时空组细胞分群算法原理与思想">时空专题4_时空组细胞分群算法原理与思想</a><time datetime="2024-10-09T05:40:40.744Z" title="Created 2024-10-09 05:40:40">2024-10-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/09/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2_%E5%A4%9A%E6%89%B9%E6%AC%A1%E6%95%B0%E6%8D%AE%E6%95%B4%E5%90%88/" title="时空专题2_多批次数据整合">时空专题2_多批次数据整合</a><time datetime="2024-10-09T05:40:40.744Z" title="Created 2024-10-09 05:40:40">2024-10-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/09/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E7%BB%84%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/5_%E7%BB%86%E8%83%9E%E6%B3%A8%E9%87%8A%E6%96%B9%E6%B3%95%E5%92%8C%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93/" title="时空专题5_细胞注释方法和常用数据库">时空专题5_细胞注释方法和常用数据库</a><time datetime="2024-10-09T05:40:40.744Z" title="Created 2024-10-09 05:40:40">2024-10-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/09/%E5%AD%A6%E4%B9%A0/%E6%97%B6%E7%A9%BA%E5%8D%95%E7%BB%86%E8%83%9E%E5%88%86%E6%9E%90%E6%8F%AD%E7%A4%BA%E7%BB%93%E7%9B%B4%E8%82%A0%E7%99%8C%E5%85%8D%E7%96%AB%E6%B2%BB%E7%96%97%E4%B8%8D%E5%90%8C%E5%8F%8D%E5%BA%94%E7%9A%84%E7%BB%86%E8%83%9E%E5%8A%A8%E6%80%81/" title="时空组学经典论文阅读 Spatiotemporal single-cell analysis decodes cellular dynamics underlying different responses to immunotherapy in colorectal cancer">时空组学经典论文阅读 Spatiotemporal single-cell analysis decodes cellular dynamics underlying different responses to immunotherapy in colorectal cancer</a><time datetime="2024-10-09T05:40:40.743Z" title="Created 2024-10-09 05:40:40">2024-10-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Lihuax</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addModeChange('mermaid', runMermaid)
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'g7ugLcLRZQImFitw8qLfg663-gzGzoHsz',
+      appKey: 'KLsDFN1Oblr0vPS7zl3cg5wG',
+      avatar: 'monsterid',
+      serverURLs: 'https://g7uglclr.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
