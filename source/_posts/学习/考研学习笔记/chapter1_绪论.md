@@ -294,28 +294,28 @@ Exosome #flashcard
 
 ## 名词补充
 
-### cytoplast #flashcard
+**cytoplast** #flashcard
 
 细胞质(cytoplast)
 是细胞质膜包围的除了核区以外的一切半透明、胶状、颗粒状物质的总称，包括了细胞质基质和细胞器，是细胞生命活动的主要场所。
 
-### Somatic protoplast #flashcard
+**Somatic protoplast** #flashcard
 
 原生质体（Somatic protoplast）：将植物的体细胞（二倍体细胞)利用纤维素酶处理去掉细胞壁，最终得到的结构称为原生质体。
 
-### prokaryotic cell #flashcard
+**prokaryotic cell** #flashcard
 
 原核细胞（prokaryotic cell）：是指细胞内没有典型的核结构，只存在裸露的DNA拟核结构，并且不存在除核糖体外其他复杂细胞器的细胞，包括支原体、衣原体、立克次氏体、细菌、放线菌与蓝细菌等多个庞大的家族。
 
-### plasmid #flashcard
+**plasmid** #flashcard
 
 质粒（plasmid）：是细菌细胞内除核区以外的 DNA，裸露的环状DNA 分子。质粒在细胞中通常为多拷贝形式存在，可以传递给后代，有时质粒可以整合到核DNA 中去，赋予细菌以新的形状。质粒在基因工程研究和应用中很重要，常用作基因重组与基因转移的载体。
 
-### Nucleoid #flashcard
+**Nucleoid** #flashcard
 
 拟核（Nucleoid）或者叫做类核：又称为核区或类核，一个位于原核细胞中形状不规则且边界不明显区域的环形 DNA 分子，称为拟核，没有核膜，也没有核仁，是遗传物质储存和复制的场所。
 
-### mycoplast #flashcard
+**mycoplast** #flashcard
 
 支原体（mycoplast）：是目前发现的能在无生命培养基中生长繁殖的体积最小最简单的唯一一种没有细胞壁的原核细胞，其细胞膜含有胆固醇，比其他原核生物的质膜更坚韧且具有多功能性，具备细胞的基本结构与功能。
 
