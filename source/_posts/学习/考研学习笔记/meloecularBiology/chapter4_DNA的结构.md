@@ -148,7 +148,7 @@ Reannealing & hybridization #flashcard
 1. 完全复性分子，分别由互补的两条野生型链或两条突变型链构成双螺旋；
 2. 杂交分子，由一条野生型链和一条突变型链构成，并形成一段短的不配对的环（区域a）。
   
-![image-20240920174155399|300](./img/image-20240920174155399.png)
+![image-20240920174155399|300](/img/postgraduate_entrance_examination/image-20240920174155399.png)
 <!--ID: 1728541379873-->
 
 hyperchromicity #flashcard
