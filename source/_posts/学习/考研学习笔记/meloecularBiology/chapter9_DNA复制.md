@@ -396,7 +396,7 @@ E.coli复制起始过程:
 
 ### 端粒酶通过延伸染色体3'端解决了末端复制问题
 
-![5'端延伸方式](/img/postgraduate_entrance_examination/molecular_biology/image-end-replication-problem.png)
+![延伸方式](/img/postgraduate_entrance_examination/molecular_biology/image-end-replication-problem.png)
 
 ### 端粒结合蛋白调节端粒酶活性和端粒长度
 
